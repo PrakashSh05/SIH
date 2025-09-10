@@ -1,0 +1,67 @@
+# General
+# =================================
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Log and temp files
+*.log
+*.tmp
+
+# IDE & Editor specific
+# =================================
+# Visual Studio Code
+.vscode/
+
+# JetBrains (PyCharm, Android Studio, IntelliJ)
+.idea/
+*.iml
+*.iws
+
+# Python / FastAPI
+# =================================
+# Environment
+venv/
+.venv/
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Sensitive environment files
+backend_fastapi/.env
+
+# Node.js / React
+# =================================
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.vite/
+
+# Debug logs
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+
+# Sensitive environment files
+frontend_react/.env.local
+
+# Flutter
+# =================================
+# Build artifacts
+build/
+.dart_tool/
+.pub/
+.pub-cache/
+
+# Sensitive environment files
+mobile_flutter/.env
