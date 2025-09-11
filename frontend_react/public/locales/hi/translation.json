@@ -1,0 +1,54 @@
+{
+    "login": {
+        "title": "INCOIS एकीकृत मंच",
+        "signInPrompt": "जारी रखने के लिए कृपया साइन इन करें",
+        "signUpPrompt": "एक नया खाता बनाएं",
+        "emailLabel": "ईमेल",
+        "passwordLabel": "पासवर्ड",
+        "signInButton": "साइन इन करें",
+        "signUpButton": "साइन अप करें",
+        "toggleToSignUp": "खाता नहीं है? साइन अप करें",
+        "toggleToSignIn": "पहले से ही एक खाता है? साइन इन करें"
+    },
+    "citizen": {
+        "portalTitle": "नागरिक पोर्टल",
+        "mapTitle": "खतरे का नक्शा",
+        "reportTitle": "नई रिपोर्ट",
+        "reportPageHeader": "महासागर के खतरे की रिपोर्ट करें",
+        "reportPageSubheader": "आपका योगदान हमारे तटों को सुरक्षित रखने में मदद करता है। कृपया नीचे अपने अवलोकन का विवरण प्रदान करें।",
+        "notesLabel": "अवलोकन नोट्स",
+        "mediaLabel": "फोटो/वीडियो अपलोड करें",
+        "getLocationButton": "वर्तमान स्थान प्राप्त करें",
+        "locationAcquired": "स्थान प्राप्त हो गया!",
+        "submitButton": "रिपोर्ट सबमिट करें"
+    },
+    "official": {
+        "portalTitle": "आधिकारिक पोर्टल",
+        "dashboardTitle": "सत्यापन डैशबोर्ड",
+        "dashboardSubheader": "आने वाली नागरिक रिपोर्टों की समीक्षा और अद्यतन करें।",
+        "changeStatusLabel": "स्थिति बदलें",
+        "status": {
+            "verified": "सत्यापित",
+            "rejected": "अस्वीकृत",
+            "pending": "लंबित"
+        }
+    },
+    "admin": {
+        "portalTitle": "व्यवस्थापक और विश्लेषक पोर्टल",
+        "dashboardTitle": "डैशबोर्ड",
+        "dashboardSubheader": "एकत्रित प्लेटफ़ॉर्म डेटा",
+        "observationsTitle": "अवलोकन",
+        "mapAnalysisTitle": "नक्शा विश्लेषण",
+        "socialFeedTitle": "सोशल फ़ीड",
+        "charts": {
+            "observationsByStatus": "स्थिति के अनुसार अवलोकन",
+            "reportsByType": "प्रकार के अनुसार रिपोर्ट"
+        }
+    },
+    "common": {
+        "logout": "लॉग आउट",
+        "observedAt": "अवलोकन का समय",
+        "notes": "नोट्स",
+        "status": "स्थिति"
+    }
+}
