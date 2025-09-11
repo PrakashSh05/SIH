@@ -1,0 +1,54 @@
+{
+    "login": {
+        "title": "INCOIS Unified Platform",
+        "signInPrompt": "Please sign in to continue",
+        "signUpPrompt": "Create a new account",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "signInButton": "Sign in",
+        "signUpButton": "Sign up",
+        "toggleToSignUp": "Don't have an account? Sign up",
+        "toggleToSignIn": "Already have an account? Sign in"
+    },
+    "citizen": {
+        "portalTitle": "Citizen Portal",
+        "mapTitle": "Hazard Map",
+        "reportTitle": "New Report",
+        "reportPageHeader": "Report an Ocean Hazard",
+        "reportPageSubheader": "Your contribution helps keep our coasts safe. Please provide details about your observation below.",
+        "notesLabel": "Observation Notes",
+        "mediaLabel": "Upload Photo/Video",
+        "getLocationButton": "Get Current Location",
+        "locationAcquired": "Location Acquired!",
+        "submitButton": "Submit Report"
+    },
+    "official": {
+        "portalTitle": "Official Portal",
+        "dashboardTitle": "Verification Dashboard",
+        "dashboardSubheader": "Review and update incoming citizen reports.",
+        "changeStatusLabel": "Change Status",
+        "status": {
+            "verified": "Verified",
+            "rejected": "Rejected",
+            "pending": "Pending"
+        }
+    },
+    "admin": {
+        "portalTitle": "Admin & Analyst Portal",
+        "dashboardTitle": "Dashboard",
+        "dashboardSubheader": "Aggregated Platform Data",
+        "observationsTitle": "Observations",
+        "mapAnalysisTitle": "Map Analysis",
+        "socialFeedTitle": "Social Feed",
+        "charts": {
+            "observationsByStatus": "Observations by Status",
+            "reportsByType": "Reports by Type"
+        }
+    },
+    "common": {
+        "logout": "Logout",
+        "observedAt": "Observed At",
+        "notes": "Notes",
+        "status": "Status"
+    }
+}

@@ -1,62 +1,68 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
-import { useAuth } from '../contexts/AuthContext';
-import { Title, Text, Paper, Group, SimpleGrid, RingProgress, Center } from '@mantine/core';
-import { IconReport, IconBook, IconMapPin } from '@tabler/icons-react';
+import { Title, Text, Paper, SimpleGrid, Group, Button } from '@mantine/core'; // Import Group and Button
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useTranslation } from 'react-i18next'; // 1. Import the hook
 
 export default function DashboardPage() {
-    const { user } = useAuth();
-    const [stats, setStats] = useState<any>(null);
+    const { t, i18n } = useTranslation(); // 2. Initialize the hook
+    const [aggregates, setAggregates] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchStats = async () => {
-            if (!user) return;
-            // This calls the custom SQL function you created
-            const { data, error } = await supabase.rpc('get_user_stats', { target_user_id: user.id });
+        const fetchAggregates = async () => {
+            const { data, error } = await supabase.rpc('get_dashboard_aggregates');
             if (error) {
-                console.error("Error fetching stats:", error);
+                console.error("Error fetching aggregates:", error);
             } else {
-                setStats(data);
+                setAggregates(data);
             }
             setLoading(false);
         };
-        fetchStats();
-    }, [user]);
+        fetchAggregates();
+    }, []);
 
     if (loading) return <Text>Loading dashboard...</Text>;
-    if (!stats) return <Text>Could not load user statistics.</Text>;
-
-    const statCards = [
-        { title: 'Projects Created', value: stats.projects_created, icon: IconBook },
-        { title: 'Observations Logged', value: stats.observations_made, icon: IconMapPin },
-        { title: 'Reports Filed', value: stats.reports_created, icon: IconReport },
-    ];
 
     return (
         <>
-            <Title order={2}>Dashboard</Title>
-            <Text c="dimmed" mb="xl">Welcome back, {user?.email}</Text>
+            {/* 3. Replace hardcoded text with the t() function */}
+            <Title order={2}>{t('dashboardTitle')}</Title>
+            <Text c="dimmed" mb="xl">{t('dashboardSubtitle')}</Text>
 
-            <SimpleGrid cols={{ base: 1, sm: 3 }}>
-                {statCards.map((stat) => (
-                    <Paper withBorder p="md" radius="md" key={stat.title}>
-                        <Group>
-                            <RingProgress
-                                sections={[{ value: 100, color: 'blue' }]}
-                                label={
-                                    <Center>
-                                        <stat.icon style={{ width: '70%', height: '70%' }} />
-                                    </Center>
-                                }
-                            />
-                            <div>
-                                <Text c="dimmed" size="xs" tt="uppercase" fw={700}>{stat.title}</Text>
-                                <Text fw={700} size="xl">{stat.value}</Text>
-                            </div>
-                        </Group>
-                    </Paper>
-                ))}
+            {/* 4. Add buttons to change the language */}
+            <Group mb="md">
+                <Button onClick={() => i18n.changeLanguage('en')} variant={i18n.language === 'en' ? 'filled' : 'default'}>English</Button>
+                <Button onClick={() => i18n.changeLanguage('hi')} variant={i18n.language === 'hi' ? 'filled' : 'default'}>हिन्दी</Button>
+            </Group>
+
+            <SimpleGrid cols={{ base: 1, lg: 2 }}>
+                <Paper withBorder p="md" radius="md">
+                    <Title order={4} mb="md">{t('observationsByStatusChartTitle')}</Title>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={aggregates?.observations_by_status || []}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="status" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="count" fill="#8884d8" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </Paper>
+                <Paper withBorder p="md" radius="md">
+                    <Title order={4} mb="md">{t('reportsByTypeChartTitle')}</Title>
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={aggregates?.reports_by_type || []}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="report_type" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="count" fill="#82ca9d" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </Paper>
             </SimpleGrid>
         </>
     );

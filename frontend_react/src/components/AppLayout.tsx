@@ -1,6 +1,6 @@
-import { AppShell, Burger, Group, NavLink, Button } from '@mantine/core';
+import { AppShell, Burger, Group, NavLink, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconGauge, IconMapPin, IconMessage2, IconLogout } from '@tabler/icons-react';
+import { IconChartBar, IconMap2, IconMapPin, IconMessage2, IconLogout } from '@tabler/icons-react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 
@@ -14,10 +14,12 @@ export default function AppLayout() {
         navigate('/login');
     };
 
+    // CORRECTED: Paths now include the "/admin" prefix
     const navLinks = [
-        { icon: IconGauge, label: 'Dashboard', path: '/dashboard' },
-        { icon: IconMapPin, label: 'Observations', path: '/observations' },
-        { icon: IconMessage2, label: 'Social Feed', path: '/social-feed' },
+        { icon: IconChartBar, label: 'Dashboard', path: '/admin/dashboard' },
+        { icon: IconMapPin, label: 'Observations', path: '/admin/observations' },
+        { icon: IconMap2, label: 'Map Analysis', path: '/admin/map-analysis' },
+        { icon: IconMessage2, label: 'Social Feed', path: '/admin/social-feed' },
     ];
 
     return (
@@ -29,7 +31,7 @@ export default function AppLayout() {
             <AppShell.Header>
                 <Group h="100%" px="md">
                     <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    <div style={{ fontWeight: 'bold' }}>INCOIS Platform</div>
+                    <Text fw={500}>Admin & Analyst Portal</Text>
                 </Group>
             </AppShell.Header>
 
@@ -51,9 +53,7 @@ export default function AppLayout() {
                 />
             </AppShell.Navbar>
 
-            <AppShell.Main>
-                <Outlet />
-            </AppShell.Main>
+            <AppShell.Main><Outlet /></AppShell.Main>
         </AppShell>
     );
 }
